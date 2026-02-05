@@ -9,13 +9,24 @@ jobs:
         - name: Checkout Repo
           uses: actions/checkout@v6   
 
-        - name: Welcome Message
-          run: echo "Hello World"
+        # ================================================================
+        # Executing Multi-line commands
+        # - name: Welcome Message
+        #   run: echo "Hello World"
 
-        - name: List Files
-          run: ls
+        # - name: List Files
+        #   run: ls
 
-        - name: Read File
-          run: cat README.md
+        # - name: Read File
+        #   run: cat README.md
+        # ================================================================
+        
+        # ================================================================
+        # Executing Multi-line commands
+        - name: List and Read the files
+          run: |
+            echo "Combining the above 3 actions"
+            ls -ltr
+            cat README.md
 
         
