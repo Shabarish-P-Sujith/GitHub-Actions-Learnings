@@ -1,0 +1,21 @@
+name: Generate ASCII Artwork
+
+on: push
+
+jobs:
+    ascii_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout Repo
+          uses: actions/checkout@v4
+
+        - name: Install cowsay tool
+          run: |
+            sudo apt-get update  
+            sudo apt-get install cowsay -y
+
+        - name: Execute Cowsay
+          run: cowsay -f dragon "Hello, this is a demo ascii command" > ascii_hello.txt 
+
+        - name: Test if the file exists
+          run: grep -i "demo" ascii_hello.txt 
