@@ -27,5 +27,5 @@ jobs:
         # Executing Shell Script
         - name: Executing the shell
           run: |
-            chmod +x 02-second.sh
-            ./02-second.sh
+            chmod +x scripts/02-second.sh
+            scripts/02-second.sh
