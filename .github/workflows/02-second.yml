@@ -19,3 +19,6 @@ jobs:
 
         - name: Test if the file exists
           run: grep -i "demo" ascii_hello.txt 
+
+        - name: Read the file
+          run: cat ascii_hello.txt
