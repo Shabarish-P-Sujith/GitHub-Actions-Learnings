@@ -9,16 +9,21 @@ jobs:
         - name: Checkout Repo
           uses: actions/checkout@v4
 
-        - name: Install cowsay tool
-          run: |
-            sudo apt-get update  
-            sudo apt-get install cowsay -y
+        # - name: Install cowsay tool
+        #   run: |
+        #     sudo apt-get update  
+        #     sudo apt-get install cowsay -y
 
-        - name: Execute Cowsay
-          run: cowsay -f dragon "Hello, this is a demo ascii command" > ascii_hello.txt 
+        # - name: Execute Cowsay
+        #   run: cowsay -f dragon "Hello, this is a demo ascii command" > ascii_hello.txt 
 
-        - name: Test if the file exists
-          run: grep -i "demo" ascii_hello.txt 
+        # - name: Test if the file exists
+        #   run: grep -i "demo" ascii_hello.txt 
 
-        - name: Read the file
-          run: cat ascii_hello.txt
+        # - name: Read the file
+        #   run: cat ascii_hello.txt
+
+        # ================================================================================
+        # Executing Shell Script
+        - name: Executing the shell
+          run: ./02-second.sh
