@@ -22,8 +22,8 @@ jobs:
         name: dragon-file
         path: dragon.txt
 
-    - name: Sleep for 30 sec
-      run: sleep 30
+    - name: Sleep for 5 sec
+      run: sleep 5
 
   test_job:
     needs: build_job
@@ -31,6 +31,11 @@ jobs:
     steps:
     - name: Checkout Repo for Script File
       uses: actions/checkout@v4
+
+    - name: Download dragon.txt artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: dragon-file
 
     - name: Executing the shell
       run: |
