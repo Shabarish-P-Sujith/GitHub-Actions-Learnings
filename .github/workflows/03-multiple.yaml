@@ -22,11 +22,13 @@ jobs:
   test_job:
     runs-on: ubuntu-24.04
     steps:
-    - name: Sleep for 10 sec
-      run: sleep 10
+    - name: Checkout Repo for Script File
+      uses: actions/checkout@v6
 
-    - name: Test if the file exist
-      run: grep -i "people" dragon.txt
+    - name: Executing the shell
+      run: |
+        chmod +x ./scripts/03-multiple.sh
+        ./scripts/03-multiple.sh
 
   deploy_job:
     runs-on: ubuntu-24.04
