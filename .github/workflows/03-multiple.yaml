@@ -1,0 +1,36 @@
+name: Multiple Jobs in a Workflow
+
+on: push
+
+jobs:
+  build_job:
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Install cowsay tool
+      run: |
+        sudo apt-get update
+        sudo apt-get install cowsay -y
+
+    - name: Execute Cowsay 
+      run: cowsay -f dragon "Hello people.." >> dragon.txt
+
+    - name: Sleep for 30 sec
+      run: sleep 30
+
+  test_job:
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Sleep for 10 sec
+      run: sleep 10
+
+    - name: Test if the file exist
+      run: grep -i "people" dragon.txt
+
+  deploy_job:
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Read the file
+      run: cat dragon.txt
+
+    - name: Deploy
+      run: echo "Deploying....."
