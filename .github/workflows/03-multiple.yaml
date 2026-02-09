@@ -16,14 +16,21 @@ jobs:
     - name: Execute Cowsay 
       run: cowsay -f dragon "Hello people.." >> dragon.txt
 
+    - name: Upload dragon.txt artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: dragon-file
+        path: dragon.txt
+
     - name: Sleep for 30 sec
       run: sleep 30
 
   test_job:
+    needs: build_job
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout Repo for Script File
-      uses: actions/checkout@v6
+      uses: actions/checkout@v4
 
     - name: Executing the shell
       run: |
@@ -31,8 +38,14 @@ jobs:
         ./scripts/03-multiple.sh
 
   deploy_job:
+    needs: test_job
     runs-on: ubuntu-24.04
     steps:
+    - name: Download dragon.txt artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: dragon-file
+
     - name: Read the file
       run: cat dragon.txt
 
