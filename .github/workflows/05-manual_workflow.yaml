@@ -38,6 +38,7 @@ on:
 jobs:
   manual:
     runs-on: ubuntu-24.04
+    environment: ${{ inputs.environment }}
     steps:
       - name: Manual Workflow
         run: |
