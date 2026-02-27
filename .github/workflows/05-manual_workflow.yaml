@@ -1,0 +1,48 @@
+name: "Manual working of a Workflow"
+
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: "Log Level"
+        type: choice
+        options:
+          - info
+          - debug
+          - warning
+        default: "info"
+        required: true
+
+      tags:
+        description: "Test Scenario Tags"
+        type: boolean
+        required: false
+      
+      environment:
+        description: "Environment to run test again"
+        type: environment
+        required: true
+        
+      version:
+        description: "Version Number"
+        type: string
+        default: "1.2.3"
+        required: true
+
+      timeout:
+        description: "Timeout in seconds"
+        type: number
+        default: 10
+        required: true
+
+jobs:
+  manual:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Manual Workflow
+        run: |
+          echo "Log Level:    ${{ inputs.logLevel }}"
+          echo "Tags enabled: ${{ inputs.tags }}"
+          echo "Environment:  ${{ inputs.environment }}"
+          echo "Version:      ${{ inputs.version }}"
+          echo "Timeout:      ${{ inputs.timeout }}"
