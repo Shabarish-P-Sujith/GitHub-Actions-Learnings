@@ -18,10 +18,10 @@ on:
         type: boolean
         required: false
       
-      environment:
-        description: "Environment to run test again"
-        type: environment
-        required: true
+      # environment:
+      #   description: "Environment to run test again"
+      #   type: environment
+      #   required: true
         
       version:
         description: "Version Number"
@@ -38,7 +38,7 @@ on:
 jobs:
   manual:
     runs-on: ubuntu-24.04
-    environment: ${{ inputs.environment }}
+    # environment: ${{ inputs.environment }}
     steps:
       - name: Manual Workflow
         run: |
