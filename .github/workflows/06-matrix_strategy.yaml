@@ -1,0 +1,33 @@
+name: Matrix Strategy
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  deploy-on-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Docker details
+        run: docker info
+      
+      - name: Run images
+        run: docker run hello-world
+  
+  deploy-on-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Echo Docker details
+        run: docker info
+      
+      - name: Run images
+        run: docker run hello-world
+
+  deploy-on-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Echo Docker details
+        run: docker info
+      
+      - name: Run images
+        run: docker run hello-world
