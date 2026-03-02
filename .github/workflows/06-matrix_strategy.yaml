@@ -23,11 +23,13 @@ jobs:
       - name: Run images
         run: docker run hello-world
 
-  deploy-on-macos:
-    runs-on: macos-latest
-    steps:
-      - name: Echo Docker details
-        run: docker info
+  # macOS runners don't support Docker ===>>> [ This is a known GitHub Actions limitation ]
+
+  # deploy-on-macos:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: Echo Docker details
+  #       run: docker info
       
-      - name: Run images
-        run: docker run hello-world
+  #     - name: Run images
+  #       run: docker run hello-world
