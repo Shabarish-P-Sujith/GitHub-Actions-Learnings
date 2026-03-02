@@ -1,0 +1,19 @@
+name: Matrix Strategy 2
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  deploy-all-OS:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+        image: [ hello-world ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Display Docker Details
+        run: docker info
+      
+      - name: Run image on ${{ matrix.os }}
+        run: docker run ${{ matrix.image }}
