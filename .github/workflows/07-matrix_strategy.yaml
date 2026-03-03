@@ -8,8 +8,8 @@ jobs:
   deploy-all-OS:
     strategy:
       matrix:
-        os: [ ubuntu-latest, windows-latest ]
-        image: [ hello-world ]
+        os: [ ubuntu-latest, ubuntu-22.04, windows-latest, windows-2022 , macos-latest, macos-12]
+        image: [ hello-world, alpine ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Display Docker Details
