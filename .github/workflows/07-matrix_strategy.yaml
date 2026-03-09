@@ -8,26 +8,26 @@ jobs:
   deploy-all-OS:
     strategy:
       matrix:
-        os: [ ubuntu-latest, ubuntu-22.04, windows-latest, windows-2022 , macos-latest, macos-12]
-        image: [ hello-world, alpine ]
+        os: [ "${{ vars.OS_A1 }}", "${{ vars.OS_A2 }}", "${{ vars.OS_B1 }}", "${{ vars.OS_B2 }}", "${{ vars.OS_C1 }}", "${{ vars.OS_C2 }}" ]
+        image: [ "${{ vars.IMG01 }}", "${{ vars.IMG02 }}" ]
         exclude:
-          - os: macos-latest
-            image: hello-world
-          - os: macos-latest
-            image: alpine
-          - os: macos-12 
-            image: hello-world
-          - os: macos-12
-            image: alpine 
-          - os: windows-latest
-            image: alpine
-          - os: windows-2022
-            image: alpine
+          - os: "${{ vars.OS_C1 }}"
+            image: "${{ vars.IMG01 }}"
+          - os: "${{ vars.OS_C1 }}"
+            image: "${{ vars.IMG02 }}"
+          - os: "${{ vars.OS_C2 }}"
+            image: "${{ vars.IMG01 }}"
+          - os: "${{ vars.OS_C2 }}"
+            image: "${{ vars.IMG02 }}"
+          - os: "${{ vars.OS_B1 }}"
+            image: "${{ vars.IMG02 }}"
+          - os: "${{ vars.OS_B2 }}"
+            image: "${{ vars.IMG02 }}"
         include:
-          - os: ubuntu-latest
-            image: busybox
-          - os: ubuntu-22.04
-            image: busybox
+          - os: "${{ vars.OS_A1 }}"
+            image: "${{ vars.IMG03 }}"
+          - os: "${{ vars.OS_A2 }}"
+            image: "${{ vars.IMG03 }}"
           
     runs-on: ${{ matrix.os }}
     steps:
