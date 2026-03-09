@@ -23,6 +23,11 @@ jobs:
             image: alpine
           - os: windows-2022
             image: alpine
+        include:
+          - os: ubuntu-latest
+            image: busybox
+          - os: ubuntu-22.04
+            image: busybox
           
     runs-on: ${{ matrix.os }}
     steps:
