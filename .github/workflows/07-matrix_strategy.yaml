@@ -10,6 +10,16 @@ jobs:
       matrix:
         os: [ ubuntu-latest, ubuntu-22.04, windows-latest, windows-2022 , macos-latest, macos-12]
         image: [ hello-world, alpine ]
+        exclude:
+          - os: macos-latest
+            image: hello-world
+          - os: macos-latest
+            image: alpine
+          - os: macos-12 
+            image: hello-world
+          - os: macos-12
+            image: alpine 
+          
     runs-on: ${{ matrix.os }}
     steps:
       - name: Display Docker Details
