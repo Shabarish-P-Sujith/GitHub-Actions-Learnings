@@ -19,6 +19,8 @@ jobs:
             image: hello-world
           - os: macos-12
             image: alpine 
+          - os: windows-latest
+            image: alpine
           
     runs-on: ${{ matrix.os }}
     steps:
