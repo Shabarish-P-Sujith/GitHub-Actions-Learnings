@@ -21,6 +21,8 @@ jobs:
             image: alpine 
           - os: windows-latest
             image: alpine
+          - os: windows-2022
+            image: alpine
           
     runs-on: ${{ matrix.os }}
     steps:
